@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "app.js",
   "license": "MIT",
+  "engines": {
+    "node": "14.15.5",
+    "npm": "8.5.4"
+  },
   "scripts": {
     "dev": "ts-node-dev src/app.ts",
     "start": "ts-node-dev src/app.ts"
