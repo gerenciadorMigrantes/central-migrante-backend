@@ -22,7 +22,7 @@ module.exports = {
     "username": process.env.NOME,
     "password": process.env.SENHA,
     "database": process.env.BANCO,
-    "host": process.env.HOSTIP,
+    "host": '127.0.0.2',
     "port": process.env.PORTA
   }
 }
