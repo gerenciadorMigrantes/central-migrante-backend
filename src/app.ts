@@ -5,10 +5,16 @@ import usuarioRouter from './routers/usuarioRoute'
 import enderecoRouter from './routers/enderecoRoute'
 import { Sequelize } from "sequelize"
 import cors from "cors"
+require('dotenv').config({ path: __dirname+'/.env' });
 
 const Role = require("../models").Role
-const sequelize = new Sequelize('postgres://postgres:pac123@localhost:5432/mydb')
-
+const sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://postgres:pac123@localhost:5432/mydb', {
+    // dialectOptions: {
+    //     ssl: {
+    //         rejectUnauthorized: false,
+    //     },
+    // },
+})
 
 sequelize.sync().then(() => {
     console.log('Resync Db');
@@ -49,7 +55,7 @@ async function initial() {
 }
 
 const app = express()
-const port = 3333;
+const port = process.env.port;
 
 app.use(cors());
 
