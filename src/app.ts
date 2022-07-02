@@ -1,10 +1,11 @@
-import express from "express"
+
 import indexRoute from './routers/index'
 import produtoRouter from './routers/produtoRoute'
 import usuarioRouter from './routers/usuarioRoute'
 import enderecoRouter from './routers/enderecoRoute'
 import { Sequelize } from "sequelize"
-import cors from "cors"
+const cors =  require("cors")
+const express =  require("express")
 require('dotenv').config({ path: __dirname+'/.env' });
 
 const Role = require("../models").Role
