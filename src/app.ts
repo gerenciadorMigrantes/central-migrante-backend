@@ -10,12 +10,13 @@ require('dotenv').config({ path: __dirname+'/.env' });
 
 // const Role = require("../models").Role
 const sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://postgres:pac123@localhost:5432/mydb', {
-    dialectOptions: {
+    logging: false,
+    dialectOptions: process.env.NODE_ENV === 'production' ? {
         ssl: {
             require: true,
             rejectUnauthorized: false,
         },
-    },
+    } : {},
 })
 
 // sequelize.sync().then(() => {
@@ -23,11 +24,17 @@ const sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://postgres
 //     initial();
 //   });
 
-sequelize.authenticate().then(() => {
-    console.log("db ok")
-}).catch(e => {
-    console.log("db error: ", e)
-})
+export const sequelizeConnection = async () => {
+    try {
+        sequelize
+            .authenticate()
+            .then(() => {
+                console.log('Postgres connection has been established successfully.')
+            })
+    } catch (error) {
+        console.error('Unable to connect to the database:', error)
+    }
+}
 
 async function initial() {
 
@@ -58,7 +65,6 @@ async function initial() {
 
 const app = express()
 const port = process.env.port;
-console.log(">>>> minha porta" + port)
 
 app.use(cors());
 
@@ -75,5 +81,3 @@ app.use("/", indexRoute)
 app.use("/produtos", produtoRouter)
 app.use("/usuarios", usuarioRouter)
 app.use("/enderecos", enderecoRouter)
-
-export default app
