@@ -32,7 +32,7 @@ try {
 
 sequelize.sync().then(() => {
     console.log('Resync Db');
-    initial();
+    // initial();
 });
 
 async function initial() {
