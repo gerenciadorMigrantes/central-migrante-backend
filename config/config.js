@@ -16,13 +16,10 @@ module.exports = {
     "dialect": "postgres"
   },
   production: {
-    client: 'pg',
-    host: '111.222.333',
-    dialect: 'postgres',
-    connection: process.env.DATABASE_URL,
-    migrations: {
-      tableName: "SequelizeMeta",
-      directory: "./migrations"
-    }
+    "username": process.env.NOMEUSUARIO,
+    "password": process.env.SENHABANCO,
+    "database": process.env.NOMEBANCO,
+    "host": process.env.HOSTBANCO,
+    "dialect": "postgres"
   }
 }
