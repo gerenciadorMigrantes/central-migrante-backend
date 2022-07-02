@@ -19,22 +19,20 @@ const sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://postgres
     },
 })
 
+try {
+    sequelize
+        .authenticate()
+        .then(() => {
+            console.log('Postgres connection has been established successfully.')
+        })
+} catch (error) {
+    console.error('Unable to connect to the database:', error)
+}
+
 sequelize.sync().then(() => {
     console.log('Resync Db');
     initial();
 });
-
-export const sequelizeConnection = async () => {
-    try {
-        sequelize
-            .authenticate()
-            .then(() => {
-                console.log('Postgres connection has been established successfully.')
-            })
-    } catch (error) {
-        console.error('Unable to connect to the database:', error)
-    }
-}
 
 async function initial() {
 
@@ -58,7 +56,7 @@ async function initial() {
         });
 
     } catch (e) {
-        console.log("\n \n Não foi possivel criar papeis, pois já foram criados \n\n")
+        console.log("\n \n Não foi possivel criar papeis, pois já foram criados \n\n", e)
     }
 
 }
