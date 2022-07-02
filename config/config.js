@@ -20,6 +20,10 @@ module.exports = {
     "password": process.env.SENHABANCO,
     "database": process.env.NOMEBANCO,
     "host": process.env.HOSTBANCO,
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "ssl": true,
+    "dialectOptions": {
+      "ssl": {"rejectUnauthorized": false}
+    }
   }
 }

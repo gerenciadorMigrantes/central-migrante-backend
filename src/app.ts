@@ -9,11 +9,11 @@ require('dotenv').config({ path: __dirname+'/.env' });
 
 const Role = require("../models").Role
 const sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://postgres:pac123@localhost:5432/mydb', {
-    // dialectOptions: {
-    //     ssl: {
-    //         rejectUnauthorized: false,
-    //     },
-    // },
+    dialectOptions: {
+        ssl: {
+            rejectUnauthorized: false,
+        },
+    },
 })
 
 sequelize.sync().then(() => {
