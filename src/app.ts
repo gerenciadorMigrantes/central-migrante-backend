@@ -57,6 +57,7 @@ async function initial() {
 
 const app = express()
 const port = process.env.port;
+console.log(">>>> minha porta" + port)
 
 app.use(cors());
 
@@ -64,7 +65,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
     console.log('Server running on port: ' + port)
 })
 
