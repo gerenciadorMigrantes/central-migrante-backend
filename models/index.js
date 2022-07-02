@@ -7,9 +7,15 @@ const basename = path.basename(__filename);
 const db = {};
 require('dotenv').config({ path: './src/.env' });
 
-let sequelize;
-
-sequelize = new Sequelize(process.env.DATABASE_URL)
+const sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://postgres:pac123@localhost:5432/mydb', {
+  logging: false,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
+})
 
 fs
   .readdirSync(__dirname)
