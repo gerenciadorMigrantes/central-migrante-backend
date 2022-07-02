@@ -17,6 +17,7 @@ module.exports = {
   },
   production: {
     client: 'pg',
+    host: '111.222.333',
     dialect: 'postgres',
     connection: process.env.DATABASE_URL,
     migrations: {
