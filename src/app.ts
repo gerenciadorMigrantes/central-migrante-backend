@@ -65,8 +65,10 @@ async function initial() {
 const app = express()
 const port = process.env.PORT;
 
-app.use(cors());
-
+app.use((req: Request, res: Response, next: NextFunction) => {
+    app.use(cors());
+    next();
+})
 
 
 app.use(express.urlencoded({extended: false}))
