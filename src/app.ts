@@ -65,12 +65,7 @@ async function initial() {
 const app = express()
 const port = process.env.PORT;
 
-var corsOptions = {
-    origin: ['http:127.0.0.1:4200', 'http://localhost:4200', 'https://migrantes-front.herokuapp.com/'],
-    credentials: true,
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 
 
 
