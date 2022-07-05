@@ -71,7 +71,7 @@ const port = process.env.PORT;
 
 
 app.use((req: Request, res: Response, next: NextFunction) => {
-    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Origin", 'http://localhost:4200')
     res.header(
         "Access-Control-Allow-Headers",
         "Origin, X-Requested, Content-Type, Accept Authorization"
