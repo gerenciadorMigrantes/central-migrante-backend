@@ -70,11 +70,6 @@ const port = process.env.PORT;
 //     credentials: true,
 // };
 
-console.log("process>>>>>>   ",process.env.url,"   <<<<<")
-
-const corsOptions = {origin: process.env.URL || '*', credentials: true};
-
-app.use(cors(corsOptions));
 
 app.use((req: Request, res: Response, next: NextFunction) => {
     res.header("Access-Control-Allow-Origin", "*")
@@ -90,7 +85,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
         return res.status(200).json({})
     }
     next()
-});
+})
 
 
 app.use(express.urlencoded({extended: false}))
