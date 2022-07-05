@@ -5,7 +5,6 @@ import enderecoRouter from './routers/enderecoRoute'
 import {Sequelize} from "sequelize"
 import {NextFunction, Response} from "express";
 
-const cors = require("cors")
 const express = require("express")
 require('dotenv').config({path: __dirname + '/.env'});
 
