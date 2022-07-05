@@ -77,7 +77,7 @@ const signin = async (req: Request, res: Response) => {
             authorities.push("ROLE_" + roles[i].nome.toUpperCase());
           }
 
-          return res.status(401).send({
+          res.status(200).send({
             id: user.id,
             username: user.username,
             email: user.email,
@@ -87,7 +87,7 @@ const signin = async (req: Request, res: Response) => {
         });
       })
       .catch((err: { message: any; }) => {
-        return res.status(500).send({ message: err.message });
+        res.status(500).send({ message: err.message });
       });
   };
 
