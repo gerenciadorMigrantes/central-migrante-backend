@@ -65,14 +65,32 @@ async function initial() {
 const app = express()
 const port = process.env.PORT;
 
-var corsOptions = {
-    origin: ['http:127.0.0.1:4200', 'http://localhost:4200', 'https://migrantes-front.herokuapp.com/'],
-    credentials: true,
-};
+// var corsOptions = {
+//     origin: ['http:127.0.0.1:4200', 'http://localhost:4200', 'https://migrantes-front.herokuapp.com/'],
+//     credentials: true,
+// };
+
+console.log("process>>>>>>   ",process.env.url,"   <<<<<")
+
+const corsOptions = {origin: process.env.URL || '*', credentials: true};
+
+app.use(cors(corsOptions));
+
 app.use((req: Request, res: Response, next: NextFunction) => {
-    app.use(cors(corsOptions));
-    next();
-})
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested, Content-Type, Accept Authorization"
+    )
+    if (req.method === "OPTIONS") {
+        res.header(
+            "Access-Control-Allow-Methods",
+            "POST, PUT, PATCH, GET, DELETE"
+        )
+        return res.status(200).json({})
+    }
+    next()
+});
 
 
 app.use(express.urlencoded({extended: false}))
