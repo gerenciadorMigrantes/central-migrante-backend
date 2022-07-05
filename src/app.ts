@@ -3,8 +3,7 @@ import produtoRouter from './routers/produtoRoute'
 import usuarioRouter from './routers/usuarioRoute'
 import enderecoRouter from './routers/enderecoRoute'
 import {Sequelize} from "sequelize"
-import {NextFunction, Response} from "express";
-
+const cors = require("cors")
 const express = require("express")
 require('dotenv').config({path: __dirname + '/.env'});
 
@@ -64,28 +63,8 @@ async function initial() {
 const app = express()
 const port = process.env.PORT;
 
-// var corsOptions = {
-//     origin: ['http:127.0.0.1:4200', 'http://localhost:4200', 'https://migrantes-front.herokuapp.com/'],
-//     credentials: true,
-// };
-
-
-app.use((req: Request, res: Response, next: NextFunction) => {
-    res.header("Access-Control-Allow-Origin", 'http://localhost:4200')
-    res.header(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested, Content-Type, Accept Authorization"
-    )
-    if (req.method === "OPTIONS") {
-        res.header(
-            "Access-Control-Allow-Methods",
-            "POST, PUT, PATCH, GET, DELETE"
-        )
-        return res.status(200).json({})
-    }
-    next()
-})
-
+app.use(cors());
+app.options('*', cors());
 
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
