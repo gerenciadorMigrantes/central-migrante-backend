@@ -1,5 +1,4 @@
 import indexRoute from './routers/index'
-import produtoRouter from './routers/produtoRoute'
 import usuarioRouter from './routers/usuarioRoute'
 import enderecoRouter from './routers/enderecoRoute'
 import {Sequelize} from "sequelize"
@@ -75,6 +74,5 @@ app.listen(port, "0.0.0.0", () => {
 
 
 app.use("/", indexRoute)
-app.use("/produtos", produtoRouter)
 app.use("/usuarios", usuarioRouter)
 app.use("/enderecos", enderecoRouter)
