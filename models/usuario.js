@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
     dataNascimento: DataTypes.DATE,
     nacionalidade: DataTypes.STRING,
     cidadeNascimento: DataTypes.STRING,
-    genero: DataTypes.ENUM("MASCULINO", "FEMININO", "TRANS", "OUTRO"),
+    genero: DataTypes.ENUM("PREFIRO_NAO_DIZER","MASCULINO", "FEMININO", "TRANS", "OUTRO"),
     corRaca: DataTypes.ENUM("AMARELA", "BRANCA", "INDIGENA", "PARDA", "PRETA"),
     estadoOndeAtravessouFronteira: DataTypes.STRING,
     viaDeEntrada: DataTypes.ENUM("TERRESTRE", "AEREO", "MARITIMO"),
