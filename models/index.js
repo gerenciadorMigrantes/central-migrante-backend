@@ -9,12 +9,12 @@ require('dotenv').config({ path: './src/.env' });
 
 const sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://postgres:pac123@localhost:5432/mydb', {
   logging: false,
-  dialectOptions: {
+  dialectOptions: process.env.NODE_ENV == 'production' ? {
     ssl: {
       require: true,
       rejectUnauthorized: false,
     },
-  },
+  } : {},
 })
 
 fs

@@ -10,12 +10,12 @@ require('dotenv').config({path: __dirname + '/.env'});
 const Role = require("../models").Role
 const sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://postgres:pac123@localhost:5432/mydb', {
     logging: false,
-    dialectOptions: {
+    dialectOptions: process.env.NODE_ENV == 'production' ? {
         ssl: {
             require: true,
             rejectUnauthorized: false,
         },
-    },
+    } : {},
 })
 
 try {
@@ -69,7 +69,7 @@ app.options('*', cors());
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 
-app.listen(process.env.PORT, "0.0.0.0", () => {
+app.listen(port, "0.0.0.0", () => {
     console.log('Server running on port: ' + port)
 })
 
