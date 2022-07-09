@@ -44,6 +44,7 @@ module.exports = (sequelize, DataTypes) => {
     telefone: DataTypes.STRING,
     cpf: DataTypes.STRING,
     crnm: DataTypes.STRING,
+    crnmVencimento: DataTypes.DATE,
     protocoloSolicitacaoRefugio: DataTypes.STRING,
     passaporte: DataTypes.STRING,
     ctps: DataTypes.STRING,

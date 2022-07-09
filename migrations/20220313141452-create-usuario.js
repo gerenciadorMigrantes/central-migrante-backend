@@ -56,6 +56,9 @@ module.exports = {
       crnm: {
         type: Sequelize.STRING
       },
+      crnmVencimento: {
+        type: Sequelize.DATE
+      },
       protocoloSolicitacaoRefugio: {
         type: Sequelize.STRING
       },
