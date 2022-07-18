@@ -44,3 +44,6 @@ npx sequelize-cli model:generate --name NomeEntidade --attributes nome:string,qu
    ~~~
    yarn sequelize-cli migration:create --name usuario_add_coluna_endereco_id
    ~~~
+   
+   
+   > Desenvolvido por: https://github.com/victorEsantos e https://github.com/xandegrawe
