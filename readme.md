@@ -46,4 +46,5 @@ npx sequelize-cli model:generate --name NomeEntidade --attributes nome:string,qu
    ~~~
    
    
-   > Desenvolvido por: https://github.com/victorEsantos e https://github.com/xandegrawe
+   
+> Desenvolvido por: https://github.com/victorEsantos e https://github.com/xandegrawe
